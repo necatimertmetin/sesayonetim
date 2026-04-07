@@ -2,7 +2,7 @@
 
 Modern, animated corporate website built with React, TypeScript, and Material UI.
 
-🌐 **Live Demo:** [necatimertmetin.github.io/sesa](https://necatimertmetin.github.io/sesa)
+🌐 **Live Demo:** [necatimertmetin.github.io/sesayonetim](https://necatimertmetin.github.io/sesayonetim)
 
 ## Tech Stack
 

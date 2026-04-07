@@ -5,7 +5,7 @@ import { ErrorPage } from "../pages/error/Error";
 
 export const SesaRouter = () => {
   return (
-    <BrowserRouter basename="/sesa">
+    <BrowserRouter basename="/sesayonetim">
       <Routes>
         <Route element={<PageLayout />}>
           {SesaRoutes.map((route) => (
