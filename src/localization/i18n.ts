@@ -9,7 +9,7 @@ i18n
     fallbackLng: "en",
     lng: "en",
     backend: {
-      loadPath: "/locales/{{lng}}/common.json",
+      loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}/common.json`,
     },
     interpolation: {
       escapeValue: false,
