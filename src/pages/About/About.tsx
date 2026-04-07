@@ -1,0 +1,167 @@
+import { Box, Chip, Stack, Typography } from "@mui/material";
+import { motion } from "framer-motion";
+import { useTheme, alpha } from "@mui/material/styles";
+import { useTranslation } from "../../providers/useTranslation";
+import { BackgroundLight } from "../../components/animated-components/div/BackgroundLight";
+
+export const About = () => {
+  const { translate } = useTranslation("pages.about");
+  const theme = useTheme();
+
+  return (
+    <Box sx={{ overflow: "hidden" }}>
+      <BackgroundLight intensity={0.5} />
+
+      {/* Hero */}
+      <Box
+        sx={{
+          px: { xs: 3, sm: 5, md: 8, lg: 12 },
+          pt: { xs: 14, md: 20 },
+          pb: { xs: 8, md: 12 },
+          maxWidth: 1300,
+          mx: "auto",
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <Typography
+            variant="h2"
+            sx={{ fontWeight: 800, mb: 2, letterSpacing: "-0.02em" }}
+          >
+            {translate("hero.title")}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{ color: "text.secondary", fontWeight: 400, maxWidth: 600 }}
+          >
+            {translate("hero.subtitle")}
+          </Typography>
+        </motion.div>
+      </Box>
+
+      {/* Story */}
+      <Box
+        sx={{
+          px: { xs: 3, sm: 5, md: 8, lg: 12 },
+          pb: { xs: 10, md: 16 },
+          maxWidth: 1300,
+          mx: "auto",
+        }}
+      >
+        <Stack spacing={3} sx={{ maxWidth: 800 }}>
+          {(["p1", "p2", "p3", "p4"] as const).map((key, i) => (
+            <motion.div
+              key={key}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+            >
+              <Typography
+                variant="body1"
+                sx={{ color: "text.secondary", lineHeight: 1.8 }}
+              >
+                {translate(`story.${key}`)}
+              </Typography>
+            </motion.div>
+          ))}
+        </Stack>
+      </Box>
+
+      {/* Mission & Vision */}
+      <Box
+        sx={{
+          px: { xs: 3, sm: 5, md: 8, lg: 12 },
+          pb: { xs: 10, md: 16 },
+          maxWidth: 1300,
+          mx: "auto",
+        }}
+      >
+        <Stack direction={{ xs: "column", md: "row" }} spacing={3}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ flex: 1 }}
+          >
+            <Box
+              sx={{
+                p: { xs: 4, md: 5 },
+                borderRadius: 4,
+                height: "100%",
+                background: alpha(theme.palette.background.paper, 0.5),
+                backdropFilter: "blur(16px)",
+                border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+              }}
+            >
+              <Chip
+                label="Mission"
+                size="small"
+                sx={{
+                  mb: 2,
+                  background: alpha(theme.palette.primary.main, 0.1),
+                  border: `1px solid ${alpha(theme.palette.primary.main, 0.3)}`,
+                  color: theme.palette.primary.main,
+                  fontWeight: 600,
+                }}
+              />
+              <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                {translate("mission.title")}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: "text.secondary", lineHeight: 1.8 }}
+              >
+                {translate("mission.text")}
+              </Typography>
+            </Box>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            style={{ flex: 1 }}
+          >
+            <Box
+              sx={{
+                p: { xs: 4, md: 5 },
+                borderRadius: 4,
+                height: "100%",
+                background: alpha(theme.palette.background.paper, 0.5),
+                backdropFilter: "blur(16px)",
+                border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+              }}
+            >
+              <Chip
+                label="Vision"
+                size="small"
+                sx={{
+                  mb: 2,
+                  background: alpha(theme.palette.secondary.main, 0.1),
+                  border: `1px solid ${alpha(theme.palette.secondary.main, 0.3)}`,
+                  color: theme.palette.secondary.main,
+                  fontWeight: 600,
+                }}
+              />
+              <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                {translate("vision.title")}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: "text.secondary", lineHeight: 1.8 }}
+              >
+                {translate("vision.text")}
+              </Typography>
+            </Box>
+          </motion.div>
+        </Stack>
+      </Box>
+    </Box>
+  );
+};

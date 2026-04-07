@@ -1,0 +1,187 @@
+{
+  "pages": {
+    "landing": {
+      "hero": {
+        "badge": "Amazon Danışmanlık",
+        "titleLine1": "Amazon",
+        "titleHighlight": "İşinizi",
+        "titleLine2": "Güvenle Büyütün",
+        "subtitle": "Envanter, lojistik, hesap sağlığı, finans ve reklamcılık alanında uzman danışmanlık — hepsi tek bir yerde.",
+        "cta": "Başlayın",
+        "ctaSecondary": "Hizmetlerimiz",
+        "cardSellers": "Hizmet Verilen Satıcı",
+        "cardSellersValue": "200+",
+        "cardProducts": "Yönetilen Ürün",
+        "cardProductsValue": "50K+",
+        "cardExperience": "Yıl Deneyim",
+        "cardExperienceValue": "10+"
+      },
+      "trustedBy": "Dünya genelinde Amazon satıcılarının güvencesiyle",
+      "whyUs": {
+        "sectionTag": "Neden Biz",
+        "sectionTitle": "Ne Yapıyoruz",
+        "sectionSubtitle": "Envanterinizi ve lojistiğinizi optimize etmekten hesap sağlığınızı korumaya ve reklam performansınızı artırmaya kadar uçtan uca Amazon danışmanlık hizmeti sunuyoruz. Misyonumuz basit: Satıcıların daha hızlı, daha az engelle büyümesine yardımcı olmak.",
+        "expertise": {
+          "tag": "01",
+          "title": "Derin Uzmanlık",
+          "description": "10+ yıllık birebir satıcılık deneyimiyle oluşturulmuş derin Amazon bilgisi."
+        },
+        "dataDriven": {
+          "tag": "02",
+          "title": "Veri Odaklı",
+          "description": "Tahmin değil, gerçek metrikler kullanıyoruz. Her karar veriye ve kanıtlanmış stratejilere dayanır."
+        },
+        "fastSupport": {
+          "tag": "03",
+          "title": "Hızlı Destek",
+          "description": "Hızlı yanıt süreleri — genellikle 24 saat içinde dönüş yapıyor ve sorunları hızla çözüyoruz."
+        }
+      },
+      "services": {
+        "sectionTag": "Hizmetler",
+        "sectionTitle": "Hizmetlerimizi Keşfedin",
+        "sectionSubtitle": "Amazon satıcıları için pratik, sonuç odaklı çözümler.",
+        "inventory": {
+          "number": "01",
+          "title": "Envanter & Lojistik",
+          "description": "Doğru ürünleri doğru zamanda stokta tutmanıza yardımcı oluyoruz. FBA gönderi planlamasından gerçek zamanlı stok senkronizasyonuna kadar, aşırı stoklama ve stok tükenmesini minimize ediyoruz."
+        },
+        "accounting": {
+          "number": "02",
+          "title": "Muhasebe & Ödemeler",
+          "description": "Amazon'a özel finansal destek — ödeme mutabakatından ücret dökümlerine, kâr/zarar analizine kadar. Marjlarınızı anlayın, nakit akışınızı takip edin."
+        },
+        "ppc": {
+          "number": "03",
+          "title": "PPC & Reklamcılık",
+          "description": "Veri odaklı Sponsored Ads stratejileriyle görünürlüğü ve reklam harcaması getirisini maksimize edin. Anahtar kelime araştırması, teklif stratejileri ve haftalık raporlama ile kampanyalarınızı yönetiyoruz."
+        },
+        "accountHealth": {
+          "number": "04",
+          "title": "Hesap Sağlığı",
+          "description": "Amazon hesabınız yaşam damarınızdır. Performans metriklerini izliyor, riskleri erken tespit ediyor ve gerekirse itiraz süreçlerini yönetiyoruz."
+        },
+        "software": {
+          "number": "05",
+          "title": "Özel Yazılım",
+          "description": "Otomasyon veya entegrasyona mı ihtiyacınız var? Amazon operasyonlarınıza özel araçlar ve paneller geliştiriyoruz."
+        }
+      },
+      "stats": {
+        "sellers": "Hizmet Verilen Satıcı",
+        "products": "Yönetilen Ürün",
+        "experience": "Yıl Deneyim",
+        "countries": "Ülke"
+      },
+      "about": {
+        "sectionTag": "Hakkımızda",
+        "sectionTitle": "Hikayemiz",
+        "description1": "Sesa Yönetim, Amazon satıcılığında 10 yıllık deneyimden doğdu. Küçük bir aile işi olarak başlayan yolculuk, her gün binlerce ürün, müşteri ve sınır ötesi lojistik yöneten güçlü bir operasyona dönüştü.",
+        "description2": "Amazon'da 10 yıllık birebir başarının ardından, özellikle yeni başlayanlar veya büyümek isteyenler için güvenilir, pratik ve ölçeklenebilir desteğe ihtiyaç olduğunu fark ettik.",
+        "description3": "Biz sadece danışman değiliz — aynı zamanda aktif satıcıyız. Satıcıların her gün karşılaştığı zorluklara, baskıya ve sürekli değişen kurallara birebir aşinayız.",
+        "missionTitle": "Misyonumuz",
+        "missionText": "Tek başına girişimcilerden büyüyen markalara kadar Amazon satıcılarını, stratejik içgörü, operasyonel destek ve akıllı araçlarla güçlendirmek.",
+        "visionTitle": "Vizyonumuz",
+        "visionText": "E-ticaret sektöründe gerçek desteğin ne anlama geldiğini yeniden tanımlayarak, Amazon satıcıları için küresel çapta tanınan bir partner olmak."
+      },
+      "testimonial": {
+        "sectionTag": "Satıcılarımız Ne Diyor",
+        "text": "Sesa Yönetim, tüm Amazon operasyonumuzu yeniden yapılandırmamıza yardımcı oldu. Envanter sorunlarımız ortadan kalktı ve reklam performansımız çarpıcı biçimde iyileşti.",
+        "author": "Amazon Satıcısı",
+        "role": "FBA Private Label, ABD"
+      },
+      "cta": {
+        "title": "Amazon İşinizi Ölçeklemeye Hazır mısınız?",
+        "subtitle": "Operasyonlarınızı sadeleştirelim ve büyümenizi maksimize edelim. Laf kalabalığı yok, sadece sonuçlar.",
+        "button": "İletişime Geçin"
+      }
+    },
+    "about": {
+      "hero": {
+        "title": "Hikayemiz",
+        "subtitle": "10 yıllık Amazon deneyimi, şimdi sizin için."
+      },
+      "story": {
+        "p1": "Sesa Yönetim, Amazon satıcılığında 10 yıllık deneyimden doğdu. Küçük bir aile işi olarak başlayan yolculuk, her gün binlerce ürün, müşteri ve sınır ötesi lojistik yöneten güçlü bir operasyona dönüştü.",
+        "p2": "Amazon ve diğer e-ticaret platformlarında 10 yıllık birebir başarının ardından, özellikle yeni başlayanlar veya büyümek isteyenler için güvenilir, pratik ve ölçeklenebilir desteğe ihtiyaç olduğunu fark ettik.",
+        "p3": "Bu yüzden Sesa Yönetim'i kurduk: gerçek dünya bilgimizi ve araçlarımızı diğer Amazon satıcılarıyla paylaşmak için. Biz sadece danışman değiliz — aynı zamanda aktif satıcıyız.",
+        "p4": "Bugün hem danışmanlık hem de Amazon işletmelerine özel yazılım çözümleri sunuyoruz. Hesap sağlığı izlemeden PPC optimizasyonuna, envanter otomasyonundan finansal raporlamaya kadar — satıcıların daha akıllı, hızlı ve kârlı çalışmasına yardımcı oluyoruz."
+      },
+      "mission": {
+        "title": "Misyonumuz",
+        "text": "Misyonumuz, tek başına girişimcilerden büyüyen markalara kadar Amazon satıcılarını — stratejik içgörü, operasyonel destek ve akıllı araçlarla güçlendirmektir."
+      },
+      "vision": {
+        "title": "Vizyonumuz",
+        "text": "E-ticaret sektöründe gerçek desteğin ne anlama geldiğini yeniden tanımlayarak, Amazon satıcıları için küresel çapta tanınan bir partner olmayı hedefliyoruz."
+      }
+    },
+    "services": {
+      "hero": {
+        "title": "Hizmetlerimiz",
+        "subtitle": "Amazon satıcıları için pratik, sonuç odaklı çözümler."
+      },
+      "inventory": {
+        "title": "Envanter Yönetimi",
+        "description": "Doğru ürünleri doğru zamanda stokta tutmanıza yardımcı oluyoruz. FBA gönderi planlamasından tedarikçileriniz veya 3PL'lerinizle gerçek zamanlı stok senkronizasyonuna kadar, sistemlerimiz aşırı stoklamayı minimize eder."
+      },
+      "logistics": {
+        "title": "Lojistik & Teslimat",
+        "description": "İster FBA, ister FBM ya da hibrit model kullanın — gönderi süreçlerinizi kolaylaştırmak için rehberlik ve araçlar sağlıyoruz."
+      },
+      "accountHealth": {
+        "title": "Hesap Sağlığı İzleme",
+        "description": "Amazon hesabınız yaşam damarınızdır. Performans metriklerini izliyor, riskleri erken tespit ediyor ve gerektiğinde itiraz süreçlerini yönetiyoruz."
+      },
+      "accounting": {
+        "title": "Muhasebe & Finansal Takip",
+        "description": "Amazon'a özel finansal destek sunuyoruz — ödeme mutabakatı ve ücret dökümlerinden kâr/zarar analizine kadar."
+      },
+      "ppc": {
+        "title": "Reklamcılık (PPC) Yönetimi",
+        "description": "Veri odaklı Sponsored Ads stratejileriyle görünürlüğü ve reklam harcaması getirisini maksimize edin."
+      },
+      "software": {
+        "title": "Özel Yazılım Çözümleri",
+        "description": "Otomasyon veya entegrasyona mı ihtiyacınız var? Amazon operasyonlarınıza özel araçlar ve paneller geliştiriyoruz."
+      }
+    },
+    "contact": {
+      "title": "Konuşalım",
+      "subtitle": "Sizden haber almak isteriz. Bir sorunuz mu var, desteğe mi ihtiyacınız var yoksa bir iş birliği mi keşfetmek istiyorsunuz — burada yardımcı olmak için varız.",
+      "emailLabel": "E-posta",
+      "email": "info@sesayonetim.com",
+      "phoneLabel": "Telefon",
+      "phone": "+1 479 395 3784",
+      "companyLabel": "Şirket Bilgileri",
+      "companyName": "SESA YONETIM",
+      "companyNote": "SARPER CELEBI LLC tarafından işletilmektedir",
+      "addressLabel": "Adres",
+      "address": "Edgewater, New Jersey, ABD",
+      "responseTime": "Genellikle 24 saat içinde yanıt veriyoruz.",
+      "form": {
+        "title": "Bize mesaj gönderin",
+        "name": "Ad Soyad",
+        "email": "E-posta",
+        "subject": "Konu",
+        "message": "Mesajınız",
+        "submit": "Gönder"
+      }
+    },
+    "error": {
+      "title": "Sayfa Bulunamadı",
+      "subtitle": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
+      "goHome": "Ana Sayfaya Dön"
+    }
+  },
+  "navigation": {
+    "homepage": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "services": "Hizmetler",
+    "contact": "İletişim"
+  },
+  "footer": {
+    "allRightsReserved": "© {{year}} SESA YONETIM. Tüm hakları saklıdır.",
+    "company": "SARPER CELEBI LLC tarafından işletilen, ABD'de kayıtlı bir limited şirket."
+  }
+}

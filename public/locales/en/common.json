@@ -1,0 +1,187 @@
+{
+  "pages": {
+    "landing": {
+      "hero": {
+        "badge": "Amazon Consulting",
+        "titleLine1": "Accelerate Your",
+        "titleHighlight": "Amazon",
+        "titleLine2": "Business with Confidence",
+        "subtitle": "Expert consulting in inventory, logistics, account health, finance, and advertising — all in one place.",
+        "cta": "Get Started",
+        "ctaSecondary": "Our Services",
+        "cardSellers": "Sellers Served",
+        "cardSellersValue": "200+",
+        "cardProducts": "Products Managed",
+        "cardProductsValue": "50K+",
+        "cardExperience": "Years Experience",
+        "cardExperienceValue": "10+"
+      },
+      "trustedBy": "Trusted by Amazon sellers worldwide",
+      "whyUs": {
+        "sectionTag": "Why Choose Us",
+        "sectionTitle": "What We Do",
+        "sectionSubtitle": "We provide end-to-end Amazon consulting services — from optimizing your inventory and logistics to ensuring account health and improving your ad performance. Our mission is simple: Help sellers grow faster, with fewer obstacles.",
+        "expertise": {
+          "tag": "01",
+          "title": "Deep Expertise",
+          "description": "Deep knowledge of Amazon systems built from 10+ years of hands-on selling experience."
+        },
+        "dataDriven": {
+          "tag": "02",
+          "title": "Data-Driven",
+          "description": "We use real metrics, not guesses. Every decision is backed by data and proven strategies."
+        },
+        "fastSupport": {
+          "tag": "03",
+          "title": "Fast Support",
+          "description": "Quick response times — we typically respond within 24 hours and resolve issues fast."
+        }
+      },
+      "services": {
+        "sectionTag": "Services",
+        "sectionTitle": "Explore Our Services",
+        "sectionSubtitle": "Practical, results-driven solutions tailored for Amazon sellers.",
+        "inventory": {
+          "number": "01",
+          "title": "Inventory & Logistics",
+          "description": "We help you keep the right products in stock at the right time. From FBA shipment planning to real-time stock sync, our systems minimize overstocking and prevent stockouts. Whether you're using FBA, FBM, or a hybrid model, we streamline your shipping processes."
+        },
+        "accounting": {
+          "number": "02",
+          "title": "Accounting & Payments",
+          "description": "Amazon-specific financial support — from payout reconciliation and fees breakdowns to profit/loss analysis. Understand your margins, track your cash flow, and make decisions based on real numbers."
+        },
+        "ppc": {
+          "number": "03",
+          "title": "PPC & Advertising",
+          "description": "Maximize visibility and return on ad spend with data-driven Sponsored Ads strategies. We manage keyword research, bidding strategies, campaign structure, and ongoing optimization — with weekly reporting."
+        },
+        "accountHealth": {
+          "number": "04",
+          "title": "Account Health",
+          "description": "Your Amazon account is your lifeline. We monitor performance metrics, flag risks early, and handle appeal processes if necessary. Our goal is to help you stay compliant and avoid suspensions."
+        },
+        "software": {
+          "number": "05",
+          "title": "Custom Software",
+          "description": "Need automation or integrations? We build custom tools and dashboards tailored to your Amazon operations, whether for inventory sync, financial tracking, or data analysis."
+        }
+      },
+      "stats": {
+        "sellers": "Sellers Served",
+        "products": "Products Managed",
+        "experience": "Years Experience",
+        "countries": "Countries"
+      },
+      "about": {
+        "sectionTag": "About Us",
+        "sectionTitle": "Our Story",
+        "description1": "Sesa Yonetim was born out of a decade of experience in Amazon selling. What started as a small family business has grown into a robust operation, managing thousands of products, customers, and cross-border logistics every day.",
+        "description2": "After 10 years of hands-on success on Amazon, we realized the need for reliable, practical, and scalable support — especially for those just starting or looking to grow. That's why we founded Sesa Yonetim: to share our real-world knowledge and tools with other Amazon sellers.",
+        "description3": "We are not just consultants — we're active sellers ourselves. We understand the pain points, the pressure, and the endless updates that sellers face daily.",
+        "missionTitle": "Our Mission",
+        "missionText": "To empower Amazon sellers — from solo entrepreneurs to scaling brands — with the strategic insight, operational support, and intelligent tools they need to grow sustainably in today's complex e-commerce landscape.",
+        "visionTitle": "Our Vision",
+        "visionText": "To become a globally recognized partner for Amazon sellers by redefining what true support means in the e-commerce industry. We envision a future where selling on Amazon is less stressful, more predictable, and ultimately more profitable."
+      },
+      "testimonial": {
+        "sectionTag": "What Sellers Say",
+        "text": "Sesa Yonetim helped us restructure our entire Amazon operation. Our inventory issues disappeared and ad performance improved dramatically. They truly understand the seller's perspective.",
+        "author": "Amazon Seller",
+        "role": "FBA Private Label, USA"
+      },
+      "cta": {
+        "title": "Ready to Scale Your Amazon Business?",
+        "subtitle": "Let's simplify your operations and maximize your growth. No fluff, just results.",
+        "button": "Get in Touch"
+      }
+    },
+    "about": {
+      "hero": {
+        "title": "Our Story",
+        "subtitle": "A decade of Amazon expertise, now available to you."
+      },
+      "story": {
+        "p1": "Sesa Yonetim was born out of a decade of experience in Amazon selling. What started as a small family business has grown into a robust operation, managing thousands of products, customers, and cross-border logistics every day.",
+        "p2": "After 10 years of hands-on success on Amazon and other e-commerce platforms, we realized the need for reliable, practical, and scalable support — especially for those just starting or looking to grow.",
+        "p3": "That's why we founded Sesa Yonetim: to share our real-world knowledge and tools with other Amazon sellers. We are not just consultants — we're active sellers ourselves. We understand the pain points, the pressure, and the endless updates that sellers face daily.",
+        "p4": "Today, we offer both consulting and software solutions tailored for Amazon businesses. From account health monitoring and PPC optimization to inventory automation and financial reporting — we help sellers operate smarter, faster, and more profitably."
+      },
+      "mission": {
+        "title": "Our Mission",
+        "text": "Our mission is to empower Amazon sellers — from solo entrepreneurs to scaling brands — with the strategic insight, operational support, and intelligent tools they need to grow sustainably. We aim to simplify the overwhelming tasks of selling on Amazon by offering clear, hands-on consulting and smart automation solutions."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "text": "Our vision is to become a globally recognized partner for Amazon sellers by redefining what true support means in the e-commerce industry. We envision a future where selling on Amazon is less stressful, more predictable, and ultimately more profitable — no matter your size or experience level."
+      }
+    },
+    "services": {
+      "hero": {
+        "title": "Our Services",
+        "subtitle": "Practical, results-driven solutions tailored for Amazon sellers."
+      },
+      "inventory": {
+        "title": "Inventory Management",
+        "description": "We help you keep the right products in stock at the right time. From FBA shipment planning to real-time stock sync with your suppliers or 3PLs, our systems minimize overstocking and prevent stockouts — saving time and money."
+      },
+      "logistics": {
+        "title": "Logistics & Fulfillment",
+        "description": "Whether you're using FBA, FBM, or a hybrid model, we provide guidance and tools to streamline your shipping processes. We help with warehouse coordination, international shipping setups, return handling, and more."
+      },
+      "accountHealth": {
+        "title": "Account Health Monitoring",
+        "description": "Your Amazon account is your lifeline. We monitor performance metrics, flag risks early, and handle appeal processes if necessary. Our goal is to help you stay compliant and avoid suspensions before they happen."
+      },
+      "accounting": {
+        "title": "Accounting & Financial Tracking",
+        "description": "We offer Amazon-specific financial support — from payout reconciliation and fees breakdowns to profit/loss analysis. Understand your margins, track your cash flow, and make decisions based on real numbers."
+      },
+      "ppc": {
+        "title": "Advertising (PPC) Management",
+        "description": "Maximize visibility and return on ad spend with data-driven Sponsored Ads strategies. We manage keyword research, bidding strategies, campaign structure, and ongoing optimization — with weekly reporting."
+      },
+      "software": {
+        "title": "Custom Software Solutions",
+        "description": "Need automation or integrations? We build custom tools and dashboards tailored to your Amazon operations, whether for inventory sync, financial tracking, or data analysis."
+      }
+    },
+    "contact": {
+      "title": "Let's Talk",
+      "subtitle": "We'd love to hear from you. Whether you have a question, need support, or want to explore a partnership — we're here to help.",
+      "emailLabel": "Email",
+      "email": "info@sesayonetim.com",
+      "phoneLabel": "Call",
+      "phone": "+1 479 395 3784",
+      "companyLabel": "Company Information",
+      "companyName": "SESA YONETIM",
+      "companyNote": "Operated by SARPER CELEBI LLC",
+      "addressLabel": "Address",
+      "address": "Edgewater, New Jersey, USA",
+      "responseTime": "We typically respond within 24 hours.",
+      "form": {
+        "title": "Send us a message",
+        "name": "Full Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Your Message",
+        "submit": "Send Message"
+      }
+    },
+    "error": {
+      "title": "Page Not Found",
+      "subtitle": "The page you are looking for does not exist or may have been moved.",
+      "goHome": "Go to Homepage"
+    }
+  },
+  "navigation": {
+    "homepage": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "footer": {
+    "allRightsReserved": "© {{year}} SESA YONETIM. All rights reserved.",
+    "company": "Operated by SARPER CELEBI LLC, a registered U.S. limited liability company."
+  }
+}
