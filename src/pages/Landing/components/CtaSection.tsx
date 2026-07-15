@@ -27,8 +27,11 @@ export const CtaSection = () => {
         <Box
           sx={{
             p: { xs: 5, md: 8 },
-            borderRadius: 5,
-            background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark || theme.palette.primary.main})`,
+            borderRadius: 4,
+            // antrasit metal panel — logodaki koyu iç yüzey
+            background: "linear-gradient(150deg, #1E2126 0%, #0C0D0F 100%)",
+            border: "1px solid #2A2E34",
+            borderTop: `2px solid ${theme.palette.primary.main}`,
             position: "relative",
             overflow: "hidden",
             textAlign: "center",
@@ -62,8 +65,8 @@ export const CtaSection = () => {
           <Typography
             variant="h3"
             sx={{
-              fontWeight: 800,
-              color: "#fff",
+              fontWeight: 700,
+              color: "#E8EAED",
               mb: 2,
               position: "relative",
               letterSpacing: "-0.02em",
@@ -74,7 +77,7 @@ export const CtaSection = () => {
           <Typography
             variant="body1"
             sx={{
-              color: "rgba(255,255,255,0.8)",
+              color: "rgba(232,234,237,0.72)",
               mb: 4,
               maxWidth: 500,
               mx: "auto",
@@ -95,10 +98,15 @@ export const CtaSection = () => {
               borderRadius: 2.5,
               fontSize: "1rem",
               fontWeight: 700,
-              backgroundColor: "#fff",
-              color: theme.palette.primary.main,
+              background: `linear-gradient(135deg, ${theme.palette.primary.light}, ${theme.palette.primary.main} 55%, ${theme.palette.primary.dark})`,
+              color: "#101113",
               position: "relative",
-              "&:hover": { backgroundColor: "rgba(255,255,255,0.9)" },
+              boxShadow: "0 10px 30px rgba(240,140,26,0.3)",
+              "&:hover": {
+                boxShadow: "0 14px 38px rgba(240,140,26,0.45)",
+                transform: "translateY(-2px)",
+              },
+              transition: "all 0.3s",
             }}
             href="mailto:info@sesayonetim.com"
           >

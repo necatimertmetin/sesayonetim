@@ -2,21 +2,27 @@ import type { ButtonProps } from "@mui/material";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 // ──────────────────────────────────────────
-// FONT PRESET — Değiştirmek için aşağıdakilerden birini aç:
-//
-// Seçenek 1: Sora (başlık) + Inter (body)
-// const FONT = '"Sora", "Inter", sans-serif';
-//
-// Seçenek 2: Plus Jakarta Sans (tek font)
-// const FONT = '"Plus Jakarta Sans", sans-serif';
-//
-// Seçenek 3: Outfit (tek font)
-// const FONT = '"Outfit", sans-serif';
-//
-// Seçenek 4: Space Grotesk (başlık) + DM Sans (body) — eski combo
-// const FONT = '"Space Grotesk", "DM Sans", sans-serif';
+// SESA YÖNETİM — endüstriyel / metalik kimlik
+// Logo referansı: fırçalanmış çelik "S" + turuncu globe
+// Başlık: Space Grotesk — teknik, keskin
+// Gövde:  Inter — okunur, nötr
 // ──────────────────────────────────────────
-const FONT = '"Sora", "Inter", sans-serif';
+const HEADING_FONT = '"Space Grotesk", "Inter", sans-serif';
+const BODY_FONT = '"Inter", sans-serif';
+
+// Marka renkleri
+const ORANGE = "#F08C1A"; // logo globe turuncusu
+const ORANGE_DARK = "#C26A00";
+const ORANGE_LIGHT = "#FFA94D";
+
+const headingVariants = {
+  h1: { fontFamily: HEADING_FONT, fontWeight: 700, letterSpacing: "-0.03em" },
+  h2: { fontFamily: HEADING_FONT, fontWeight: 700, letterSpacing: "-0.02em" },
+  h3: { fontFamily: HEADING_FONT, fontWeight: 700, letterSpacing: "-0.02em" },
+  h4: { fontFamily: HEADING_FONT, fontWeight: 600, letterSpacing: "-0.01em" },
+  h5: { fontFamily: HEADING_FONT, fontWeight: 600 },
+  h6: { fontFamily: HEADING_FONT, fontWeight: 600 },
+};
 
 // MUI palette genişletme
 declare module "@mui/material/styles" {
@@ -39,117 +45,51 @@ declare module "@mui/material/styles" {
   }
 }
 
-// Light Theme
+// Light Theme — gümüş / çelik zemin, antrasit yazı, turuncu vurgu
 const LightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#D35400",
-      light: "#E67E22",
-      dark: "#A84300",
-      contrastText: "#fff", // primary button yazısı için
+      main: "#D97706", // açık zeminde okunur turuncu
+      light: ORANGE,
+      dark: "#A85500",
+      contrastText: "#fff",
     },
     secondary: {
-      main: "#26C6DA", // açık turkuaz-mavi ton, canlı ve soft
+      main: "#5B6672", // çelik grisi
+      light: "#8A93A0",
+      dark: "#3D454F",
     },
+    divider: "#C7CCD3",
     background: {
-      default: "#d6d6d6", // orta açık gri, beyaza çok yakın değil
-      paper: "#eee", // defaulttan biraz daha koyu ama hâlâ açık ton
+      default: "#EEF0F3", // gümüş
+      paper: "#FFFFFF",
     },
     text: {
-      primary: "#111111", // koyu - ana yazı
-      secondary: "#3a3a3a", // yardımcı yazılar - daha okunur
+      primary: "#15181C", // antrasit
+      secondary: "#4A515A",
     },
     customBackground: {
-      box: "#f5f5f5",
+      box: "#E4E7EB",
     },
     highlightedRow: {
-      main: "#f0f8ff",
+      main: "#F5F0E8",
     },
   },
   typography: {
-    fontFamily: FONT,
+    fontFamily: BODY_FONT,
+    ...headingVariants,
   },
-
+  shape: { borderRadius: 8 },
   components: {
-    MuiTypography: {
-      defaultProps: {
-        fontFamily: FONT,
-      },
-      styleOverrides: {
-        root: {
-          color: "#111111", // açık tema için yazı rengi koyu
-        },
-      },
-    },
-    MuiAppBar: {
-      defaultProps: {
-        color: "default",
-        elevation: 0,
-      },
-      styleOverrides: {
-        root: {
-          backgroundColor: "white",
-          height: "64px",
-          color: "#222222", // appbar yazısı koyu olsun
-        },
-      },
-    },
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: "#fff", // body arka plan beyaz
-          color: "#222222", // body yazı koyu
-        },
-        "main.MuiBox-root": {
-          backgroundColor: "#f5f5f5",
+          backgroundColor: "#EEF0F3",
+          color: "#15181C",
         },
       },
     },
-    MuiButton: {
-      styleOverrides: {
-        root: ({
-          ownerState,
-        }: {
-          ownerState: { variant?: string; color?: string };
-        }) => ({
-          ...(ownerState.variant === "contained" &&
-            ownerState.color === "primary" && {
-              color: "#fff",
-            }),
-        }),
-      },
-    },
-  },
-});
-
-// Dark Theme
-const DarkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: {
-      main: "#FF6F00",
-      light: "#FFA040",
-      dark: "#C43E00",
-    },
-    secondary: {
-      main: "#00BFA5",
-    },
-    background: {
-      default: "#0d0d0d",
-      paper: "#121212",
-    },
-    customBackground: {
-      box: "#1a1a1a",
-    },
-    highlightedRow: {
-      main: "#2a2a2a",
-    },
-  },
-  typography: {
-    fontFamily: FONT,
-  },
-  components: {
     MuiAppBar: {
       defaultProps: {
         color: "default",
@@ -157,8 +97,9 @@ const DarkTheme = createTheme({
       },
       styleOverrides: {
         root: {
-          backgroundColor: "#121212",
+          backgroundColor: "transparent",
           height: "64px",
+          color: "#15181C",
         },
       },
     },
@@ -172,20 +113,75 @@ const DarkTheme = createTheme({
         }),
       },
     },
+  },
+});
+
+// Dark Theme — antrasit zemin, çelik yazı, turuncu vurgu (ana görünüm)
+const DarkTheme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: ORANGE,
+      light: ORANGE_LIGHT,
+      dark: ORANGE_DARK,
+      contrastText: "#101113",
+    },
+    secondary: {
+      main: "#AEB6C2", // çelik grisi
+      light: "#D4D9E0",
+      dark: "#7C8592",
+    },
+    divider: "#2A2E34",
+    background: {
+      default: "#0C0D0F",
+      paper: "#141619",
+    },
+    text: {
+      primary: "#E8EAED",
+      secondary: "#9BA3AD",
+    },
+    customBackground: {
+      box: "#1A1D21",
+    },
+    highlightedRow: {
+      main: "#22262B",
+    },
+  },
+  typography: {
+    fontFamily: BODY_FONT,
+    ...headingVariants,
+  },
+  shape: { borderRadius: 8 },
+  components: {
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: "#0d0d0d",
-          color: "#ffffff",
-        },
-        "main.MuiBox-root": {
-          backgroundColor: "#1a1a1a",
+          backgroundColor: "#0C0D0F",
+          color: "#E8EAED",
         },
       },
     },
-    MuiTypography: {
+    MuiAppBar: {
       defaultProps: {
-        fontFamily: FONT,
+        color: "default",
+        elevation: 0,
+      },
+      styleOverrides: {
+        root: {
+          backgroundColor: "transparent",
+          height: "64px",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: ({ ownerState }: { ownerState: ButtonProps }) => ({
+          ...(ownerState.variant === "contained" &&
+            ownerState.color === "primary" && {
+              color: "#101113",
+              fontWeight: 700,
+            }),
+        }),
       },
     },
   },

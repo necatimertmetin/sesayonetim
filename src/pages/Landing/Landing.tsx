@@ -2,11 +2,6 @@ import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useEffect, useRef } from "react";
 import { Hero } from "./components/Hero";
-import { Hero2 } from "./components/Hero2";
-import { Hero3 } from "./components/Hero3";
-import { Hero4 } from "./components/Hero4";
-import { Hero5 } from "./components/Hero5";
-import { Hero6 } from "./components/Hero6";
 import { LogoBar } from "./components/LogoBar";
 import { WhyUs } from "./components/WhyUs";
 import { Stats } from "./components/Stats";
@@ -201,11 +196,6 @@ export const Landing = () => {
       <DotGrid />
 
       <Hero />
-      <Hero2 />
-      <Hero3 />
-      <Hero4 />
-      <Hero5 />
-      <Hero6 />
       <LogoBar />
       <WhyUs />
       <Stats />

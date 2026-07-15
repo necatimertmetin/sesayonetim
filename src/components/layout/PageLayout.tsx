@@ -59,9 +59,10 @@ const NoiseBackground = () => {
       );
     };
 
+    // fırçalanmış çelik hissi — kontur çizgileri nötr gri tonlarda
     const lineColor = isDark
-      ? alpha(theme.palette.primary.main, 0.09)
-      : alpha(theme.palette.primary.main, 0.3);
+      ? alpha(theme.palette.secondary.main, 0.07)
+      : alpha(theme.palette.secondary.main, 0.18);
 
     const draw = () => {
       const t = Date.now() / 12000;
@@ -179,7 +180,7 @@ const NoiseBackground = () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
     };
-  }, [isDark, theme.palette.primary.main]);
+  }, [isDark, theme.palette.secondary.main]);
 
   return (
     <canvas

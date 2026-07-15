@@ -2,7 +2,7 @@ import { AppBar, Box, Typography, Button, Stack } from "@mui/material";
 import { ThemeToggle } from "./components/ThemeToggle";
 import LanguageSwitch from "./components/LanguageSwitch";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import Sesa from "../../../assets/SesaYonetim.png";
+import Logo from "../../../assets/SesaYonetim.png";
 import { Routes } from "../../../router/Routes";
 import { useTranslation } from "../../../providers/useTranslation";
 import { useTheme, alpha } from "@mui/material/styles";
@@ -13,6 +13,7 @@ export const Header = () => {
   const theme = useTheme();
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const isDark = theme.palette.mode === "dark";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -23,7 +24,6 @@ export const Header = () => {
 
   const navRoutes = Routes.filter((r) => r.visibleOnHeader);
   const primary = theme.palette.primary.main;
-  const secondary = theme.palette.secondary.main;
 
   const isActive = (path: string) => {
     const resolved = path === "/" ? "/" : `/${path}`;
@@ -36,11 +36,13 @@ export const Header = () => {
       elevation={0}
       sx={{
         backgroundColor: scrolled
-          ? alpha(theme.palette.background.default, 0.8)
+          ? alpha(theme.palette.background.default, 0.85)
           : "transparent",
-        backdropFilter: scrolled ? "blur(24px) saturate(1.4)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(24px) saturate(1.4)" : "none",
-        borderBottom: `1px solid ${scrolled ? alpha(theme.palette.divider, 0.12) : "transparent"}`,
+        backdropFilter: scrolled ? "blur(24px) saturate(1.2)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(24px) saturate(1.2)" : "none",
+        borderBottom: `1px solid ${
+          scrolled ? alpha(theme.palette.divider, 0.6) : "transparent"
+        }`,
         transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
         boxShadow: "none",
       }}
@@ -63,7 +65,7 @@ export const Header = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            gap: 1.2,
+            gap: 1.4,
             textDecoration: "none",
             color: "inherit",
             flexShrink: 0,
@@ -72,39 +74,49 @@ export const Header = () => {
         >
           <Box
             sx={{
-              width: 56,
-              height: 56,
-              borderRadius: "14px",
+              width: 44,
+              height: 44,
+              borderRadius: "10px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: `linear-gradient(135deg, ${alpha(primary, 0.12)}, ${alpha(secondary, 0.08)})`,
-              border: `1px solid ${alpha(primary, 0.15)}`,
+              overflow: "hidden",
+              // logonun beyaz zeminiyle bütünleşen gümüş plaka
+              background: "linear-gradient(160deg, #FFFFFF 0%, #E9EBEE 100%)",
+              border: `1px solid ${
+                isDark ? alpha("#FFFFFF", 0.18) : "#C7CCD3"
+              }`,
+              boxShadow: isDark
+                ? "0 2px 12px rgba(0,0,0,0.5)"
+                : "0 2px 8px rgba(21,24,28,0.1)",
               transition: "all 0.3s ease",
               "&:hover": {
-                background: `linear-gradient(135deg, ${alpha(primary, 0.2)}, ${alpha(secondary, 0.14)})`,
                 transform: "scale(1.05)",
+                borderColor: alpha(primary, 0.5),
               },
             }}
           >
             <img
-              src={Sesa}
-              alt="Sesa"
-              style={{ height: 42, width: 42, objectFit: "contain" }}
+              src={Logo}
+              alt="Sesa Yönetim"
+              style={{ height: 40, width: 40, objectFit: "contain" }}
             />
           </Box>
           <Typography
             sx={{
+              fontFamily: '"Space Grotesk", sans-serif',
               fontWeight: 700,
-              fontSize: "1.15rem",
-              letterSpacing: "0.04em",
-              background: `linear-gradient(135deg, ${primary}, ${secondary})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              fontSize: "1.1rem",
+              letterSpacing: "0.02em",
+              color: "text.primary",
+              lineHeight: 1,
+              whiteSpace: "nowrap",
             }}
           >
-            Sesa
+            Sesa{" "}
+            <Box component="span" sx={{ color: primary }}>
+              Yönetim
+            </Box>
           </Typography>
         </Box>
 
@@ -131,7 +143,7 @@ export const Header = () => {
                   position: "relative",
                   px: 2,
                   py: 0.8,
-                  borderRadius: "10px",
+                  borderRadius: "8px",
                   color: active ? primary : "text.primary",
                   fontWeight: active ? 700 : 500,
                   fontSize: "0.875rem",
@@ -156,7 +168,7 @@ export const Header = () => {
                       width: 16,
                       height: 2,
                       borderRadius: 1,
-                      background: `linear-gradient(90deg, ${primary}, ${secondary})`,
+                      background: primary,
                     }}
                   />
                 )}

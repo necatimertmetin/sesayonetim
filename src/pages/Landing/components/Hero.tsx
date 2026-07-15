@@ -88,8 +88,19 @@ export const Hero = () => {
   const primary = theme.palette.primary.main;
   const secondary = theme.palette.secondary.main;
 
-  const gradientText = {
-    background: `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`,
+  // logo turuncusu — accent kelime
+  const orangeText = {
+    background: `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${primary} 60%, ${theme.palette.primary.dark} 100%)`,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+  };
+
+  // fırçalanmış çelik — metalik dikey gradient
+  const steelText = {
+    background: isDark
+      ? "linear-gradient(180deg, #F5F6F7 0%, #C9CDD3 45%, #9AA1AB 55%, #E2E5E9 100%)"
+      : "linear-gradient(180deg, #4A515A 0%, #737C87 45%, #3D454F 55%, #5B6672 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     backgroundClip: "text",
@@ -104,7 +115,7 @@ export const Hero = () => {
     {
       label: translate("hero.cardProducts"),
       value: translate("hero.cardProductsValue"),
-      color: isDark ? "#fff" : "#222",
+      color: theme.palette.text.primary,
     },
     {
       label: translate("hero.cardExperience"),
@@ -133,7 +144,7 @@ export const Hero = () => {
       {/* ── MAIN CONTENT ── */}
       <Box
         sx={{
-          maxWidth: 900,
+          maxWidth: 940,
           mx: "auto",
           width: "100%",
           display: "flex",
@@ -144,7 +155,7 @@ export const Hero = () => {
           zIndex: 3,
         }}
       >
-        {/* Badge with glowing dot */}
+        {/* Badge — endüstriyel etiket */}
         <motion.div
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -154,20 +165,20 @@ export const Hero = () => {
             sx={{
               display: "inline-flex",
               alignItems: "center",
-              gap: 1,
+              gap: 1.2,
               mb: 4,
               px: 2.5,
-              py: 0.8,
-              borderRadius: 10,
-              background: alpha(primary, 0.06),
-              border: `1px solid ${alpha(primary, 0.2)}`,
+              py: 0.9,
+              borderRadius: "6px",
+              background: alpha(secondary, isDark ? 0.08 : 0.06),
+              border: `1px solid ${alpha(secondary, 0.35)}`,
               backdropFilter: "blur(12px)",
             }}
           >
             <Box
               sx={{
-                width: 8,
-                height: 8,
+                width: 7,
+                height: 7,
                 borderRadius: "50%",
                 background: primary,
                 boxShadow: `0 0 10px ${primary}, 0 0 20px ${alpha(primary, 0.4)}`,
@@ -180,10 +191,12 @@ export const Hero = () => {
             />
             <Typography
               sx={{
-                fontSize: "0.78rem",
+                fontFamily: '"Space Grotesk", sans-serif',
+                fontSize: "0.72rem",
                 fontWeight: 600,
-                color: primary,
-                letterSpacing: 0.8,
+                color: "text.primary",
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
               }}
             >
               {translate("hero.badge")}
@@ -191,27 +204,31 @@ export const Hero = () => {
           </Box>
         </motion.div>
 
-        {/* Title — staggered word reveal */}
+        {/* Title — çelik + turuncu */}
         <Typography
           variant="h1"
           sx={{
-            fontWeight: 800,
+            fontWeight: 700,
             fontSize: {
               xs: "2.8rem",
               sm: "3.8rem",
               md: "4.5rem",
               lg: "5.2rem",
             },
-            lineHeight: 1.04,
+            lineHeight: 1.05,
             mb: 3,
-            letterSpacing: "-0.035em",
+            letterSpacing: "-0.03em",
           }}
         >
-          <StaggerWords text={translate("hero.titleLine1")} delay={0.2} />
+          <StaggerWords
+            text={translate("hero.titleLine1")}
+            delay={0.2}
+            sx={steelText}
+          />
           <StaggerWords
             text={translate("hero.titleHighlight")}
             delay={0.45}
-            sx={gradientText}
+            sx={orangeText}
           />
           <br />
           <StaggerWords text={translate("hero.titleLine2")} delay={0.55} />
@@ -228,7 +245,7 @@ export const Hero = () => {
             sx={{
               color: "text.secondary",
               mb: 5,
-              maxWidth: 520,
+              maxWidth: 540,
               mx: "auto",
               lineHeight: 1.8,
               fontSize: { xs: "1rem", md: "1.1rem" },
@@ -258,15 +275,15 @@ export const Hero = () => {
               sx={{
                 textTransform: "none",
                 px: 5,
-                py: 1.8,
-                borderRadius: 3,
+                py: 1.7,
+                borderRadius: "10px",
                 fontSize: "1.02rem",
                 fontWeight: 700,
-                background: `linear-gradient(135deg, ${primary}, ${theme.palette.primary.dark || primary})`,
-                boxShadow: `0 0 0 0 ${alpha(primary, 0)}, 0 12px 40px ${alpha(primary, 0.4)}`,
+                background: `linear-gradient(135deg, ${theme.palette.primary.light}, ${primary} 55%, ${theme.palette.primary.dark})`,
+                boxShadow: `0 12px 36px ${alpha(primary, 0.35)}`,
                 transition: "all 0.3s",
                 "&:hover": {
-                  boxShadow: `0 0 0 6px ${alpha(primary, 0.15)}, 0 16px 48px ${alpha(primary, 0.5)}`,
+                  boxShadow: `0 0 0 5px ${alpha(primary, 0.15)}, 0 16px 44px ${alpha(primary, 0.45)}`,
                   transform: "translateY(-2px)",
                 },
               }}
@@ -276,31 +293,20 @@ export const Hero = () => {
             </Button>
 
             <Button
-              variant="text"
+              variant="outlined"
               size="large"
               sx={{
                 textTransform: "none",
-                px: 3,
+                px: 3.5,
                 py: 1.5,
+                borderRadius: "10px",
                 fontSize: "0.95rem",
                 fontWeight: 600,
-                color: "text.secondary",
-                position: "relative",
-                "&::after": {
-                  content: '""',
-                  position: "absolute",
-                  bottom: 10,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: 0,
-                  height: 1,
-                  background: "text.secondary",
-                  transition: "width 0.3s",
-                },
-                "&:hover::after": { width: "60%" },
+                color: "text.primary",
+                borderColor: alpha(secondary, 0.5),
                 "&:hover": {
-                  background: "transparent",
-                  color: "text.primary",
+                  borderColor: secondary,
+                  background: alpha(secondary, 0.06),
                 },
               }}
               href="#services"
@@ -310,7 +316,7 @@ export const Hero = () => {
           </Stack>
         </motion.div>
 
-        {/* ── STAT ROW ── */}
+        {/* ── STAT ROW — çelik ayraçlı ── */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -332,10 +338,20 @@ export const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5 + i * 0.15, duration: 0.6 }}
               >
-                <Box sx={{ textAlign: "center" }}>
+                <Box
+                  sx={{
+                    textAlign: "center",
+                    px: { xs: 0, sm: 3 },
+                    borderLeft:
+                      i > 0
+                        ? `1px solid ${alpha(secondary, 0.25)}`
+                        : "none",
+                  }}
+                >
                   <Typography
                     sx={{
-                      fontWeight: 800,
+                      fontFamily: '"Space Grotesk", sans-serif',
+                      fontWeight: 700,
                       fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.8rem" },
                       color: s.color,
                       lineHeight: 1,
@@ -346,11 +362,11 @@ export const Hero = () => {
                   </Typography>
                   <Typography
                     sx={{
-                      mt: 0.5,
+                      mt: 0.8,
                       color: "text.secondary",
                       fontWeight: 500,
-                      fontSize: { xs: "0.7rem", sm: "0.78rem" },
-                      letterSpacing: 1,
+                      fontSize: { xs: "0.68rem", sm: "0.75rem" },
+                      letterSpacing: "0.14em",
                       textTransform: "uppercase",
                     }}
                   >

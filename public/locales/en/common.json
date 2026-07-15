@@ -30,57 +30,6 @@
         ]
       },
       "trustedBy": "Trusted by Amazon sellers worldwide",
-      "hero2": {
-        "tag": "Why Sellers Choose Us",
-        "title": "Everything You Need,",
-        "titleHighlight": "One Partner.",
-        "subtitle": "From real-time analytics to hands-on account management — we bring clarity to the chaos of selling on Amazon.",
-        "dashTag": "Live Analytics",
-        "dashTitle": "Performance at a Glance",
-        "dashDesc": "Track sales, ad spend, and profitability in real time. No more spreadsheets.",
-        "metricLabel": "Active Sellers",
-        "featTitle": "What We Manage",
-        "feat1": "Inventory & FBA Logistics",
-        "feat2": "PPC & Ad Optimization",
-        "feat3": "Account Health & Compliance",
-        "feat4": "Financial Reporting",
-        "marqueeTag": "Our Expertise",
-        "quote": "They didn't just consult — they transformed how we operate on Amazon.",
-        "quoteAuthor": "Amazon Seller",
-        "quoteRole": "FBA Private Label, USA"
-      },
-      "hero3": {
-        "tag": "Amazon Consulting",
-        "title": "We Help You Dominate",
-        "titleAccent": "Amazon.",
-        "subtitle": "10+ years of seller experience turned into actionable strategy. Let us handle the complexity while you focus on growth.",
-        "cta": "Start Now"
-      },
-      "hero4": {
-        "titleLine1": "Built for Sellers.",
-        "titleLine2": "Driven by Data.",
-        "subtitle": "We combine deep Amazon expertise with real-time analytics to help you sell smarter — not harder.",
-        "cta": "Get Started",
-        "ctaSecondary": "Learn More",
-        "statYears": "Years",
-        "statSellers": "Sellers",
-        "statProducts": "Products"
-      },
-      "hero5": {
-        "badge": "Trusted by 200+ Sellers",
-        "titleLine1": "Your Amazon.",
-        "titleLine2": "Our Expertise.",
-        "subtitle": "End-to-end consulting that covers inventory, ads, compliance, and everything in between.",
-        "cta": "Let's Talk"
-      },
-      "hero6": {
-        "overline": "Sesa Yonetim",
-        "line1": "We Don't Just Consult.",
-        "line2": "We Transform.",
-        "line3": "Your Amazon Business.",
-        "subtitle": "From account health to ad spend — real strategies, real results, zero fluff.",
-        "cta": "Get in Touch"
-      },
       "whyUs": {
         "sectionTag": "Why Choose Us",
         "sectionTitle": "What We Do",
