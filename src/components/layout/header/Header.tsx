@@ -2,7 +2,7 @@ import { AppBar, Box, Typography, Button, Stack } from "@mui/material";
 import { ThemeToggle } from "./components/ThemeToggle";
 import LanguageSwitch from "./components/LanguageSwitch";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import Sesa from "../../../assets/logo.png";
+import Sesa from "../../../assets/SesaYonetim.png";
 import { Routes } from "../../../router/Routes";
 import { useTranslation } from "../../../providers/useTranslation";
 import { useTheme, alpha } from "@mui/material/styles";

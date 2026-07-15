@@ -1,376 +1,404 @@
-import { Box, Button, Chip, Stack, Typography } from "@mui/material";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useRef, type MouseEvent, type ReactNode } from "react";
+import { Box, Button, Stack, Typography } from "@mui/material";
+import { motion, animate, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useTheme, alpha } from "@mui/material/styles";
 import { useTranslation } from "../../../providers/useTranslation";
+import { useTranslation as useI18Next } from "react-i18next";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
-import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 
-const GlassCard = ({
-  children,
-  delay = 0,
-}: {
-  children: ReactNode;
-  delay?: number;
-}) => {
-  const theme = useTheme();
+/* ── animated counter ── */
+const Counter = ({ target }: { target: string }) => {
+  const num = parseInt(target.replace(/[^0-9]/g, ""), 10);
+  const suffix = target.replace(/[0-9]/g, "");
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    const c = animate(0, num, {
+      duration: 2.2,
+      ease: "easeOut",
+      onUpdate: (v) => setVal(Math.round(v)),
+    });
+    return () => c.stop();
+  }, [num]);
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ delay, duration: 0.8, ease: "easeOut" }}
-    >
-      <Box
-        sx={{
-          p: 3,
-          borderRadius: 3,
-          background: alpha(theme.palette.background.paper, 0.6),
-          backdropFilter: "blur(24px)",
-          border: `1px solid ${alpha(theme.palette.divider, 0.15)}`,
-          minWidth: 180,
+    <>
+      {val}
+      {suffix}
+    </>
+  );
+};
+
+/* ── word-by-word stagger ── */
+const StaggerWords = ({
+  text,
+  delay = 0,
+  sx = {},
+}: {
+  text: string;
+  delay?: number;
+  sx?: Record<string, unknown>;
+}) => (
+  <Box component="span" sx={{ display: "inline" }}>
+    {text.split(" ").map((word, i) => (
+      <motion.span
+        key={i}
+        initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{
+          delay: delay + i * 0.08,
+          duration: 0.6,
+          ease: "easeOut",
         }}
+        style={{ display: "inline-block", marginRight: "0.3em" }}
       >
-        {children}
-      </Box>
-    </motion.div>
+        <Box component="span" sx={sx}>
+          {word}
+        </Box>
+      </motion.span>
+    ))}
+  </Box>
+);
+
+/* ── typewriter subtitle ── */
+const TypewriterSubtitle = ({ texts }: { texts: string[] }) => {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setIndex((p) => (p + 1) % texts.length), 3500);
+    return () => clearInterval(id);
+  }, [texts.length]);
+  return (
+    <AnimatePresence mode="wait">
+      <motion.span
+        key={index}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -12 }}
+        transition={{ duration: 0.45 }}
+      >
+        {texts[index]}
+      </motion.span>
+    </AnimatePresence>
   );
 };
 
 export const Hero = () => {
   const { translate } = useTranslation("pages.landing");
+  const { t } = useI18Next();
   const theme = useTheme();
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const mouseX = useMotionValue(0.5);
-  const mouseY = useMotionValue(0.5);
-  const springConfig = { damping: 30, stiffness: 120 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
-  const card1X = useTransform(smoothX, [0, 1], [20, -20]);
-  const card1Y = useTransform(smoothY, [0, 1], [15, -15]);
-  const card2X = useTransform(smoothX, [0, 1], [-15, 15]);
-  const card2Y = useTransform(smoothY, [0, 1], [25, -25]);
-  const card3X = useTransform(smoothX, [0, 1], [12, -12]);
-  const card3Y = useTransform(smoothY, [0, 1], [-12, 12]);
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width);
-    mouseY.set((e.clientY - rect.top) / rect.height);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0.5);
-    mouseY.set(0.5);
-  };
+  const isDark = theme.palette.mode === "dark";
+  const primary = theme.palette.primary.main;
+  const secondary = theme.palette.secondary.main;
 
   const gradientText = {
-    background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+    background: `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`,
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     backgroundClip: "text",
   };
 
+  const stats = [
+    {
+      label: translate("hero.cardSellers"),
+      value: translate("hero.cardSellersValue"),
+      color: primary,
+    },
+    {
+      label: translate("hero.cardProducts"),
+      value: translate("hero.cardProductsValue"),
+      color: isDark ? "#fff" : "#222",
+    },
+    {
+      label: translate("hero.cardExperience"),
+      value: translate("hero.cardExperienceValue"),
+      color: secondary,
+    },
+  ];
+
+  const subtitleTexts: string[] = (t("pages.landing.hero.subtitleRotate", {
+    returnObjects: true,
+  }) as unknown as string[]) ?? [translate("hero.subtitle")];
+
   return (
     <Box
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       sx={{
-        minHeight: { xs: "auto", md: "100vh" },
+        minHeight: "100vh",
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
         position: "relative",
         overflow: "hidden",
-        px: { xs: 3, sm: 5, md: 8, lg: 12 },
-        py: { xs: 12, md: 0 },
+        px: { xs: 2, sm: 4, md: 6 },
+        py: { xs: 14, md: 0 },
       }}
     >
+      {/* ── MAIN CONTENT ── */}
       <Box
         sx={{
-          maxWidth: 1300,
+          maxWidth: 900,
           mx: "auto",
           width: "100%",
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: "column",
           alignItems: "center",
-          gap: { xs: 6, md: 8 },
+          textAlign: "center",
+          position: "relative",
+          zIndex: 3,
         }}
       >
-        {/* Left Content */}
-        <Box sx={{ flex: 1.2, maxWidth: { md: 640 } }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Chip
-              label={translate("hero.badge")}
-              size="small"
-              sx={{
-                mb: 3,
-                px: 1.5,
-                height: 32,
-                background: alpha(theme.palette.primary.main, 0.1),
-                border: `1px solid ${alpha(theme.palette.primary.main, 0.3)}`,
-                color: theme.palette.primary.main,
-                fontWeight: 600,
-                fontSize: "0.75rem",
-                letterSpacing: 0.5,
-              }}
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
-            <Typography
-              variant="h1"
-              sx={{
-                fontWeight: 800,
-                fontSize: {
-                  xs: "2.5rem",
-                  sm: "3.2rem",
-                  md: "3.8rem",
-                  lg: "4.2rem",
-                },
-                lineHeight: 1.08,
-                mb: 3,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              {translate("hero.titleLine1")}{" "}
-              <Box component="span" sx={gradientText}>
-                {translate("hero.titleHighlight")}
-              </Box>
-              <br />
-              {translate("hero.titleLine2")}
-            </Typography>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <Typography
-              variant="body1"
-              sx={{
-                fontWeight: 400,
-                color: "text.secondary",
-                mb: 5,
-                maxWidth: 480,
-                lineHeight: 1.7,
-                fontSize: { xs: "1rem", md: "1.1rem" },
-              }}
-            >
-              {translate("hero.subtitle")}
-            </Typography>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-              <Button
-                variant="contained"
-                size="large"
-                endIcon={<ArrowForwardRoundedIcon />}
-                sx={{
-                  textTransform: "none",
-                  px: 4,
-                  py: 1.5,
-                  borderRadius: 2.5,
-                  fontSize: "0.95rem",
-                  fontWeight: 600,
-                  boxShadow: `0 8px 32px ${alpha(
-                    theme.palette.primary.main,
-                    0.35,
-                  )}`,
-                }}
-                href="#contact"
-              >
-                {translate("hero.cta")}
-              </Button>
-              <Button
-                variant="outlined"
-                size="large"
-                startIcon={<PlayArrowRoundedIcon />}
-                sx={{
-                  textTransform: "none",
-                  px: 4,
-                  py: 1.5,
-                  borderRadius: 2.5,
-                  fontSize: "0.95rem",
-                  fontWeight: 600,
-                  borderColor: alpha(theme.palette.text.primary, 0.2),
-                  color: "text.primary",
-                  "&:hover": {
-                    borderColor: alpha(theme.palette.text.primary, 0.4),
-                    background: alpha(theme.palette.text.primary, 0.04),
-                  },
-                }}
-                href="#services"
-              >
-                {translate("hero.ctaSecondary")}
-              </Button>
-            </Stack>
-          </motion.div>
-        </Box>
-
-        {/* Right: Floating Glass Cards */}
-        <Box
-          sx={{
-            flex: 1,
-            position: "relative",
-            minHeight: { xs: 300, md: 420 },
-            display: { xs: "none", md: "block" },
-          }}
+        {/* Badge with glowing dot */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ type: "spring", stiffness: 200, damping: 12 }}
         >
-          {/* Card 1: Sellers Served */}
-          <motion.div
-            style={{
-              x: card1X,
-              y: card1Y,
-              position: "absolute",
-              top: 0,
-              right: 20,
-            }}
-          >
-            <GlassCard delay={0.5}>
-              <Typography
-                variant="caption"
-                sx={{
-                  color: "text.secondary",
-                  fontWeight: 500,
-                  letterSpacing: 0.5,
-                }}
-              >
-                {translate("hero.cardSellers")}
-              </Typography>
-              <Typography
-                variant="h4"
-                sx={{ fontWeight: 800, mt: 0.5, ...gradientText }}
-              >
-                {translate("hero.cardSellersValue")}
-              </Typography>
-              <Stack
-                direction="row"
-                spacing={0.5}
-                sx={{ mt: 1.5 }}
-                alignItems="flex-end"
-              >
-                {[40, 55, 35, 70, 60, 85, 95].map((h, i) => (
-                  <Box
-                    key={i}
-                    sx={{
-                      width: 8,
-                      height: h * 0.4,
-                      borderRadius: 1,
-                      background: `linear-gradient(to top, ${alpha(theme.palette.primary.main, 0.3)}, ${theme.palette.primary.main})`,
-                    }}
-                  />
-                ))}
-              </Stack>
-            </GlassCard>
-          </motion.div>
-
-          {/* Card 2: Products Managed */}
-          <motion.div
-            style={{
-              x: card2X,
-              y: card2Y,
-              position: "absolute",
-              top: 170,
-              left: 0,
-            }}
-          >
-            <GlassCard delay={0.7}>
-              <Typography
-                variant="caption"
-                sx={{
-                  color: "text.secondary",
-                  fontWeight: 500,
-                  letterSpacing: 0.5,
-                }}
-              >
-                {translate("hero.cardProducts")}
-              </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 800, mt: 0.5 }}>
-                {translate("hero.cardProductsValue")}
-              </Typography>
-              <Stack
-                direction="row"
-                alignItems="center"
-                spacing={1}
-                sx={{ mt: 1 }}
-              >
-                <Box
-                  sx={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    backgroundColor: "#4caf50",
-                    boxShadow: "0 0 8px #4caf50",
-                  }}
-                />
-                <Typography variant="caption" color="text.secondary">
-                  Live
-                </Typography>
-              </Stack>
-            </GlassCard>
-          </motion.div>
-
-          {/* Card 3: Experience */}
-          <motion.div
-            style={{
-              x: card3X,
-              y: card3Y,
-              position: "absolute",
-              bottom: 20,
-              right: 60,
-            }}
-          >
-            <GlassCard delay={0.9}>
-              <Typography
-                variant="caption"
-                sx={{
-                  color: "text.secondary",
-                  fontWeight: 500,
-                  letterSpacing: 0.5,
-                }}
-              >
-                {translate("hero.cardExperience")}
-              </Typography>
-              <Typography
-                variant="h4"
-                sx={{ fontWeight: 800, mt: 0.5, color: "secondary.main" }}
-              >
-                {translate("hero.cardExperienceValue")}
-              </Typography>
-            </GlassCard>
-          </motion.div>
-
-          {/* Decorative border */}
           <Box
             sx={{
-              position: "absolute",
-              top: "15%",
-              left: "5%",
-              width: "80%",
-              height: "60%",
-              border: `1px dashed ${alpha(theme.palette.primary.main, 0.12)}`,
-              borderRadius: 4,
-              pointerEvents: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 1,
+              mb: 4,
+              px: 2.5,
+              py: 0.8,
+              borderRadius: 10,
+              background: alpha(primary, 0.06),
+              border: `1px solid ${alpha(primary, 0.2)}`,
+              backdropFilter: "blur(12px)",
             }}
+          >
+            <Box
+              sx={{
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                background: primary,
+                boxShadow: `0 0 10px ${primary}, 0 0 20px ${alpha(primary, 0.4)}`,
+                animation: "pulse 2s ease-in-out infinite",
+                "@keyframes pulse": {
+                  "0%, 100%": { opacity: 1, transform: "scale(1)" },
+                  "50%": { opacity: 0.6, transform: "scale(1.3)" },
+                },
+              }}
+            />
+            <Typography
+              sx={{
+                fontSize: "0.78rem",
+                fontWeight: 600,
+                color: primary,
+                letterSpacing: 0.8,
+              }}
+            >
+              {translate("hero.badge")}
+            </Typography>
+          </Box>
+        </motion.div>
+
+        {/* Title — staggered word reveal */}
+        <Typography
+          variant="h1"
+          sx={{
+            fontWeight: 800,
+            fontSize: {
+              xs: "2.8rem",
+              sm: "3.8rem",
+              md: "4.5rem",
+              lg: "5.2rem",
+            },
+            lineHeight: 1.04,
+            mb: 3,
+            letterSpacing: "-0.035em",
+          }}
+        >
+          <StaggerWords text={translate("hero.titleLine1")} delay={0.2} />
+          <StaggerWords
+            text={translate("hero.titleHighlight")}
+            delay={0.45}
+            sx={gradientText}
           />
-        </Box>
+          <br />
+          <StaggerWords text={translate("hero.titleLine2")} delay={0.55} />
+        </Typography>
+
+        {/* Subtitle — typewriter rotate */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+        >
+          <Typography
+            variant="body1"
+            sx={{
+              color: "text.secondary",
+              mb: 5,
+              maxWidth: 520,
+              mx: "auto",
+              lineHeight: 1.8,
+              fontSize: { xs: "1rem", md: "1.1rem" },
+              minHeight: { xs: 54, md: 44 },
+            }}
+          >
+            <TypewriterSubtitle texts={subtitleTexts} />
+          </Typography>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.1 }}
+        >
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Button
+              variant="contained"
+              size="large"
+              endIcon={<ArrowForwardRoundedIcon />}
+              sx={{
+                textTransform: "none",
+                px: 5,
+                py: 1.8,
+                borderRadius: 3,
+                fontSize: "1.02rem",
+                fontWeight: 700,
+                background: `linear-gradient(135deg, ${primary}, ${theme.palette.primary.dark || primary})`,
+                boxShadow: `0 0 0 0 ${alpha(primary, 0)}, 0 12px 40px ${alpha(primary, 0.4)}`,
+                transition: "all 0.3s",
+                "&:hover": {
+                  boxShadow: `0 0 0 6px ${alpha(primary, 0.15)}, 0 16px 48px ${alpha(primary, 0.5)}`,
+                  transform: "translateY(-2px)",
+                },
+              }}
+              href="#contact"
+            >
+              {translate("hero.cta")}
+            </Button>
+
+            <Button
+              variant="text"
+              size="large"
+              sx={{
+                textTransform: "none",
+                px: 3,
+                py: 1.5,
+                fontSize: "0.95rem",
+                fontWeight: 600,
+                color: "text.secondary",
+                position: "relative",
+                "&::after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: 10,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: 0,
+                  height: 1,
+                  background: "text.secondary",
+                  transition: "width 0.3s",
+                },
+                "&:hover::after": { width: "60%" },
+                "&:hover": {
+                  background: "transparent",
+                  color: "text.primary",
+                },
+              }}
+              href="#services"
+            >
+              {translate("hero.ctaSecondary")} →
+            </Button>
+          </Stack>
+        </motion.div>
+
+        {/* ── STAT ROW ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          style={{ width: "100%" }}
+        >
+          <Stack
+            direction="row"
+            sx={{
+              mt: { xs: 7, md: 10 },
+              justifyContent: "center",
+              gap: { xs: 3, sm: 5, md: 8 },
+            }}
+          >
+            {stats.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.5 + i * 0.15, duration: 0.6 }}
+              >
+                <Box sx={{ textAlign: "center" }}>
+                  <Typography
+                    sx={{
+                      fontWeight: 800,
+                      fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.8rem" },
+                      color: s.color,
+                      lineHeight: 1,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    <Counter target={s.value} />
+                  </Typography>
+                  <Typography
+                    sx={{
+                      mt: 0.5,
+                      color: "text.secondary",
+                      fontWeight: 500,
+                      fontSize: { xs: "0.7rem", sm: "0.78rem" },
+                      letterSpacing: 1,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {s.label}
+                  </Typography>
+                </Box>
+              </motion.div>
+            ))}
+          </Stack>
+        </motion.div>
+
+        {/* ── SCROLL INDICATOR ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ delay: 2, duration: 1 }}
+          style={{ marginTop: 64 }}
+        >
+          <Box
+            sx={{
+              width: 24,
+              height: 40,
+              borderRadius: 12,
+              border: `2px solid ${alpha(theme.palette.text.primary, 0.2)}`,
+              display: "flex",
+              justifyContent: "center",
+              pt: 1,
+            }}
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{
+                duration: 1.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Box
+                sx={{
+                  width: 4,
+                  height: 8,
+                  borderRadius: 2,
+                  background: alpha(theme.palette.text.primary, 0.4),
+                }}
+              />
+            </motion.div>
+          </Box>
+        </motion.div>
       </Box>
     </Box>
   );

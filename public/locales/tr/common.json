@@ -12,11 +12,75 @@
         "cardSellers": "Hizmet Verilen Satıcı",
         "cardSellersValue": "200+",
         "cardProducts": "Yönetilen Ürün",
-        "cardProductsValue": "50K+",
+        "cardProductsValue": "10M+",
         "cardExperience": "Yıl Deneyim",
-        "cardExperienceValue": "10+"
+        "cardExperienceValue": "10+",
+        "floatingTags": [
+          "FBA",
+          "PPC",
+          "Lojistik",
+          "SEO",
+          "Hesap Sağlığı",
+          "Finans"
+        ],
+        "subtitleRotate": [
+          "Envanter, lojistik, hesap sağlığı, finans ve reklamcılık alanında uzman danışmanlık — hepsi tek bir yerde.",
+          "Veri odaklı stratejiler ve birebir destekle Amazon işinizi büyütün.",
+          "Ürün lansmanından küresel genişlemeye — her adımda yanınızdayız."
+        ]
       },
       "trustedBy": "Dünya genelinde Amazon satıcılarının güvencesiyle",
+      "hero2": {
+        "tag": "Satıcılar Neden Bizi Seçiyor",
+        "title": "İhtiyacınız Olan Her Şey,",
+        "titleHighlight": "Tek Partner.",
+        "subtitle": "Gerçek zamanlı analitikten birebir hesap yönetimine — Amazon'da satışın karmaşasına netlik getiriyoruz.",
+        "dashTag": "Canlı Analitik",
+        "dashTitle": "Performansınız Bir Bakışta",
+        "dashDesc": "Satış, reklam harcaması ve kârlılığı gerçek zamanlı takip edin. Artık tablolara gerek yok.",
+        "metricLabel": "Aktif Satıcı",
+        "featTitle": "Neler Yönetiyoruz",
+        "feat1": "Envanter & FBA Lojistik",
+        "feat2": "PPC & Reklam Optimizasyonu",
+        "feat3": "Hesap Sağlığı & Uyumluluk",
+        "feat4": "Finansal Raporlama",
+        "marqueeTag": "Uzmanlık Alanlarımız",
+        "quote": "Sadece danışmanlık yapmadılar — Amazon'daki işleyişimizi baştan aşağı dönüştürdüler.",
+        "quoteAuthor": "Amazon Satıcısı",
+        "quoteRole": "FBA Özel Marka, ABD"
+      },
+      "hero3": {
+        "tag": "Amazon Danışmanlık",
+        "title": "Amazon'da Fark Yaratmanıza",
+        "titleAccent": "Yardım Ediyoruz.",
+        "subtitle": "10+ yıllık satıcı deneyimimizi uygulanabilir stratejiye dönüştürüyoruz. Karmaşıklığı bize bırakın, siz büyümeye odaklanın.",
+        "cta": "Hemen Başla"
+      },
+      "hero4": {
+        "titleLine1": "Satıcılar İçin Tasarlandı.",
+        "titleLine2": "Veriyle Yönetiliyor.",
+        "subtitle": "Derin Amazon uzmanlığını gerçek zamanlı analitikle birleştirerek daha akıllı satış yapmanıza yardımcı oluyoruz.",
+        "cta": "Başlayın",
+        "ctaSecondary": "Daha Fazla",
+        "statYears": "Yıl",
+        "statSellers": "Satıcı",
+        "statProducts": "Ürün"
+      },
+      "hero5": {
+        "badge": "200+ Satıcının Güvencesi",
+        "titleLine1": "Sizin Amazon'unuz.",
+        "titleLine2": "Bizim Uzmanlığımız.",
+        "subtitle": "Envanter, reklam, uyumluluk ve arasındaki her şeyi kapsayan uçtan uca danışmanlık.",
+        "cta": "Konuşalım"
+      },
+      "hero6": {
+        "overline": "Sesa Yönetim",
+        "line1": "Sadece Danışmanlık Değil.",
+        "line2": "Dönüşüm.",
+        "line3": "Amazon İşiniz İçin.",
+        "subtitle": "Hesap sağlığından reklam harcamalarına — gerçek stratejiler, gerçek sonuçlar, sıfır laf.",
+        "cta": "İletişime Geçin"
+      },
       "whyUs": {
         "sectionTag": "Neden Biz",
         "sectionTitle": "Ne Yapıyoruz",
